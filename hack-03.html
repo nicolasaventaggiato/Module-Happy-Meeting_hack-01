@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Hack 3 – Nie ohne Agenda</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Source+Serif+4:opsz,wght@8..60,400&display=swap" rel="stylesheet" />
+<style>
+  body { margin: 0; background: #CEDFF8; -webkit-font-smoothing: antialiased; }
+  a { color: #1C2236; text-decoration-color: #EF774E; text-decoration-thickness: 2px; text-underline-offset: 3px; }
+  a:hover { color: #EF774E; }
+  @keyframes hofsPunchA {
+    0%   { transform: translate3d(0,0,0) rotate(0deg) scale(1); }
+    25%  { transform: translate3d(-7%,5%,0) rotate(-16deg) scale(1.14); }
+    55%  { transform: translate3d(6%,-6%,0) rotate(14deg) scale(0.9); }
+    100% { transform: translate3d(0,0,0) rotate(0deg) scale(1); }
+  }
+  @keyframes hofsPunchB {
+    0%   { transform: translate3d(0,0,0) rotate(0deg) scale(1); }
+    35%  { transform: translate3d(8%,-7%,0) rotate(20deg) scale(1.18); }
+    70%  { transform: translate3d(-6%,6%,0) rotate(-12deg) scale(0.88); }
+    100% { transform: translate3d(0,0,0) rotate(0deg) scale(1); }
+  }
+  @keyframes hofsPunchC {
+    0%   { transform: translate3d(0,0,0) rotate(0deg) scale(1); }
+    50%  { transform: translate3d(-9%,-8%,0) rotate(-22deg) scale(1.2); }
+    100% { transform: translate3d(0,0,0) rotate(0deg) scale(1); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    [data-blob] { animation: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══ HOFS Hack 3 – ab hier kopieren ══ -->
+<div style="position: relative; overflow: hidden; background: #CEDFF8; font-family: Inter, sans-serif; color: #1C2236">
+
+  <div data-blob="1" style="position: absolute; right: -14%; top: 1%; width: 34%; padding-bottom: 34%; background: #A6E2E4; border-radius: 50%; border-top-left-radius: 58% 52%; border-top-right-radius: 42% 48%; border-bottom-right-radius: 46% 52%; border-bottom-left-radius: 54% 48%; animation: hofsPunchA 11s ease-in-out infinite; will-change: transform"></div>
+  <div data-blob="2" style="position: absolute; right: -10%; top: 44%; width: 24%; padding-bottom: 24%; background: #FFF6DC; border-radius: 50%; border-top-left-radius: 48% 42%; border-top-right-radius: 52% 46%; border-bottom-right-radius: 44% 54%; border-bottom-left-radius: 56% 58%; animation: hofsPunchB 8s ease-in-out infinite; will-change: transform"></div>
+  <div data-blob="3" style="position: absolute; left: -12%; bottom: 24%; width: 20%; padding-bottom: 20%; background: #F3978E; border-radius: 50%; border-top-left-radius: 52% 46%; border-top-right-radius: 48% 54%; border-bottom-right-radius: 56% 46%; border-bottom-left-radius: 44% 54%; animation: hofsPunchC 9.5s ease-in-out infinite; will-change: transform"></div>
+
+  <div style="position: relative; max-width: 880px; margin: 0 auto; padding: clamp(48px, 8vw, 112px) clamp(20px, 5vw, 56px) clamp(64px, 9vw, 128px); display: flex; flex-direction: column; gap: clamp(48px, 7vw, 96px)">
+
+    <header style="display: flex; flex-direction: column; gap: clamp(18px, 2.6vw, 28px)">
+      <span data-reveal="0" style="font-size: clamp(12px, 1.4vw, 15px); font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #1C2236">E-Learning · Die 13 Hacks</span>
+      <div style="display: flex; align-items: flex-start; gap: clamp(16px, 3vw, 32px); flex-wrap: wrap">
+        <span data-reveal="80" style="font-size: clamp(56px, 11vw, 128px); font-weight: 600; line-height: 0.82; letter-spacing: -0.04em; color: #EF774E">03</span>
+        <div style="display: flex; flex-direction: column; gap: clamp(6px, 1.2vw, 14px); min-width: 0">
+          <span data-reveal="160" style="font-size: clamp(17px, 2.2vw, 26px); font-weight: 600; color: #1C2236">Hack 3</span>
+          <h1 data-reveal="240" style="margin: 0; font-size: clamp(36px, 6.4vw, 76px); font-weight: 600; line-height: 0.98; letter-spacing: -0.03em; text-wrap: balance">Nie ohne Agenda</h1>
+        </div>
+      </div>
+    </header>
+
+    <section style="display: flex; flex-direction: column; gap: clamp(20px, 3vw, 32px)">
+      <h2 data-reveal="0" style="margin: 0; font-family: 'Source Serif 4', serif; font-weight: 400; font-size: clamp(28px, 4.4vw, 52px); line-height: 1.1; max-width: 20ch">Welches Problem löst dieser Hack?</h2>
+      <p data-reveal="90" style="margin: 0; max-width: 36ch; font-size: clamp(18px, 2.2vw, 27px); line-height: 1.55; text-wrap: pretty">Ohne Agenda kommen alle mit unterschiedlichen Erwartungen. Die eine will entscheiden, der andere Ideen sammeln, die dritte nur zuhören. Nach einer Stunde habt ihr über alles geredet und nichts erreicht.</p>
+      <div data-reveal="240" style="display: flex">
+        <span style="font-size: clamp(21px, 2.9vw, 38px); font-weight: 600; line-height: 1.25; letter-spacing: -0.02em; background: #FECC32; padding: clamp(10px, 1.4vw, 16px) clamp(16px, 2.2vw, 28px); border-radius: 8px; max-width: 26ch">Sinn, Zweck und eine Zeitschätzung pro Punkt. Und alle kennen das vorher.</span>
+      </div>
+    </section>
+
+    <section style="display: flex; flex-direction: column; gap: clamp(20px, 3vw, 32px)">
+      <span data-reveal="0" style="font-size: clamp(12px, 1.4vw, 15px); font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #1C2236">Deine Aufgabe</span>
+      <h2 data-reveal="80" style="margin: 0; font-family: 'Source Serif 4', serif; font-weight: 400; font-size: clamp(28px, 4.4vw, 52px); line-height: 1.1; max-width: 22ch">So bringst du den Hack in deine Meetings</h2>
+      <p data-reveal="160" style="margin: 0; max-width: 36ch; font-size: clamp(18px, 2.2vw, 27px); line-height: 1.55">Ergänze deine nächste Einladung um vier Zeilen:</p>
+      <div style="display: flex; flex-direction: column; gap: clamp(12px, 1.8vw, 20px); max-width: 40ch">
+        <div data-reveal="240" style="display: flex; flex-direction: column; gap: 4px">
+          <span style="font-size: clamp(18px, 2.2vw, 26px); font-weight: 600">Sinn</span>
+          <span style="font-size: clamp(17px, 2vw, 23px); line-height: 1.5">Warum gibt es dieses Meeting?</span>
+        </div>
+        <div data-reveal="330" style="display: flex; flex-direction: column; gap: 4px">
+          <span style="font-size: clamp(18px, 2.2vw, 26px); font-weight: 600">Zweck</span>
+          <span style="font-size: clamp(17px, 2vw, 23px); line-height: 1.5">Was soll am Ende herauskommen?</span>
+        </div>
+        <div data-reveal="420" style="display: flex; flex-direction: column; gap: 4px">
+          <span style="font-size: clamp(18px, 2.2vw, 26px); font-weight: 600">Punkte</span>
+          <span style="font-size: clamp(17px, 2vw, 23px); line-height: 1.5">Mit Zeitschätzung, das Wichtigste zuerst.</span>
+        </div>
+        <div data-reveal="510" style="display: flex; flex-direction: column; gap: 4px">
+          <span style="font-size: clamp(18px, 2.2vw, 26px); font-weight: 600">Wer</span>
+          <span style="font-size: clamp(17px, 2vw, 23px); line-height: 1.5">Wer muss unbedingt dabei sein?</span>
+        </div>
+      </div>
+    </section>
+
+    <footer data-reveal="0" style="display: flex; flex-wrap: wrap; gap: 20px; align-items: center; justify-content: space-between; border-top: 1px solid rgba(28,34,54,0.16); padding-top: clamp(20px, 3vw, 32px)">
+      <span style="font-size: 15px; color: #1C2236">Hack 3 von 13 · House of Future Skills</span>
+      <a href="#" style="font-size: 17px; font-weight: 600">Weiter zu Hack 4</a>
+    </footer>
+
+  </div>
+</div>
+<!-- ══ bis hier ══ -->
+
+<script>
+(function () {
+  /* Blob-Radien und Animation per JS setzen: übersteht CSS-Filter in LMS/CMS */
+  var radii = {
+    '1': ['58% 52%', '42% 48%', '46% 52%', '54% 48%'],
+    '2': ['48% 42%', '52% 46%', '44% 54%', '56% 58%'],
+    '3': ['52% 46%', '48% 54%', '56% 46%', '44% 54%']
+  };
+  var anim = { '1': 'hofsPunchA 11s', '2': 'hofsPunchB 8s', '3': 'hofsPunchC 9.5s' };
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  Array.prototype.forEach.call(document.querySelectorAll('[data-blob]'), function (el) {
+    var k = el.getAttribute('data-blob'), r = radii[k];
+    if (r) {
+      el.style.borderRadius = '50%';
+      el.style.borderTopLeftRadius = r[0];
+      el.style.borderTopRightRadius = r[1];
+      el.style.borderBottomRightRadius = r[2];
+      el.style.borderBottomLeftRadius = r[3];
+    }
+    if (!reduce && anim[k]) el.style.animation = anim[k] + ' ease-in-out infinite';
+  });
+
+  var els = document.querySelectorAll('[data-reveal]');
+  if (!els.length) return;
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      var el = e.target, delay = Number(el.getAttribute('data-reveal')) || 0;
+      setTimeout(function () { el.style.opacity = '1'; el.style.transform = 'none'; }, reduce ? 0 : delay);
+      io.unobserve(el);
+    });
+  }, { threshold: 0.2, rootMargin: '0px 0px -6% 0px' });
+  Array.prototype.forEach.call(els, function (el) {
+    if (!reduce) { el.style.opacity = '0'; el.style.transform = 'translateY(44px) scale(0.94)'; }
+    el.style.transition = 'opacity 380ms ease-out, transform 480ms cubic-bezier(.2,1.5,.35,1)';
+    io.observe(el);
+  });
+})();
+</script>
+</body>
+</html>

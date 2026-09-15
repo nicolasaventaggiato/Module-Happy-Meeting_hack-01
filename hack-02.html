@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Hack 2 – Vorbereitung wie ein Profi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Source+Serif+4:opsz,wght@8..60,400&amp;display=swap" rel="stylesheet" />
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #FFF6DC; color: #1C2236; font-family: Inter, system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  .h2p a { color: #1C2236; text-decoration-color: #EF774E; text-decoration-thickness: 2px; text-underline-offset: 3px; }
+  .h2p a:hover { color: #EF774E; }
+  .h2p button:focus-visible, .h2p textarea:focus-visible { outline: 3px solid #50BDC6; outline-offset: 2px; }
+
+  .h2p { position: relative; overflow: hidden; background: #FFF6DC; }
+  .h2p-blob { position: absolute; border-radius: 50%; will-change: transform; }
+  .h2p-inner { position: relative; max-width: 880px; margin: 0 auto;
+    padding: clamp(48px,8vw,112px) clamp(20px,5vw,56px) clamp(64px,9vw,128px);
+    display: flex; flex-direction: column; gap: clamp(48px,7vw,96px); }
+  .h2p section, .h2p header { display: flex; flex-direction: column; gap: clamp(20px,3vw,32px); }
+
+  .h2p-eyebrow { font-size: clamp(12px,1.4vw,15px); font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #1C2236; }
+  .h2p-numrow { display: flex; align-items: flex-start; gap: clamp(16px,3vw,32px); flex-wrap: wrap; }
+  .h2p-num { font-size: clamp(56px,11vw,128px); font-weight: 600; line-height: .82; letter-spacing: -.04em; color: #EF774E; }
+  .h2p-hack { font-size: clamp(17px,2.2vw,26px); font-weight: 600; }
+  .h2p h1 { margin: 0; font-size: clamp(36px,6.4vw,76px); font-weight: 600; line-height: .98; letter-spacing: -.03em; text-wrap: balance; }
+  .h2p h2 { margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-weight: 400; font-size: clamp(28px,4.4vw,52px); line-height: 1.1; }
+  .h2p h2.sm { font-size: clamp(26px,4vw,46px); line-height: 1.12; }
+  .h2p p { margin: 0; max-width: 36ch; font-size: clamp(18px,2.2vw,27px); line-height: 1.55; text-wrap: pretty; }
+  .h2p p.sm { font-size: clamp(17px,2vw,22px); }
+  .h2p-key { font-size: clamp(21px,2.9vw,38px); font-weight: 600; line-height: 1.25; letter-spacing: -.02em;
+    background: #FECC32; padding: clamp(10px,1.4vw,16px) clamp(16px,2.2vw,28px); border-radius: 8px; max-width: 26ch; }
+  .h2p-headrow { display: flex; flex-wrap: wrap; align-items: baseline; gap: 16px; justify-content: space-between; }
+  .h2p-progress { font-size: 15px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+
+  .h2p-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: clamp(12px,1.6vw,18px); }
+  .h2p-card { display: flex; flex-direction: column; gap: 0; text-align: left; cursor: pointer; width: 100%;
+    border: 2px solid #1C2236; border-radius: 10px; padding: clamp(14px,2vw,20px) clamp(16px,2.2vw,24px);
+    background: #fff; color: #1C2236; font: inherit;
+    transition: background 220ms ease, transform 220ms cubic-bezier(.2,1.4,.35,1); }
+  .h2p-card[aria-expanded=true] { background: #FECC32; transform: translateY(-2px); gap: 8px; }
+  .h2p-card .lab { display: flex; align-items: center; justify-content: space-between; gap: 12px; font-size: clamp(18px,2.2vw,24px); font-weight: 600; }
+  .h2p-card .mark { font-size: 26px; line-height: 1; font-weight: 400; }
+  .h2p-card .txt { margin: 0; font-size: clamp(15px,1.8vw,19px); line-height: 1.5; max-height: 0; opacity: 0; overflow: hidden;
+    transition: max-height 300ms ease, opacity 240ms ease; }
+  .h2p-card[aria-expanded=true] .txt { max-height: 160px; opacity: 1; }
+  .h2p-done { max-width: 34ch; font-size: clamp(18px,2.2vw,26px); font-weight: 600; line-height: 1.35; }
+
+  .h2p-fields { display: flex; flex-direction: column; gap: clamp(18px,2.4vw,26px); }
+  .h2p-field { display: flex; flex-direction: column; gap: 8px; }
+  .h2p-field .lab { font-size: clamp(18px,2.2vw,24px); font-weight: 600; }
+  .h2p-field .q { font-size: clamp(16px,1.9vw,20px); line-height: 1.5; }
+  .h2p textarea { font: inherit; font-size: clamp(16px,1.9vw,20px); line-height: 1.5; color: #1C2236; background: #fff;
+    border: 2px solid #1C2236; border-radius: 10px; padding: 12px 14px; width: 100%; min-height: 76px; resize: vertical; }
+
+  .h2p-out { display: flex; flex-direction: column; gap: 14px; background: #fff; border: 2px solid #1C2236; border-radius: 12px; padding: clamp(18px,2.4vw,28px); }
+  .h2p-out .lab { font-size: 15px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #878787; }
+  .h2p-out pre { margin: 0; font-family: inherit; font-size: clamp(16px,1.9vw,20px); line-height: 1.6; white-space: pre-wrap; word-break: break-word; user-select: text; }
+  .h2p-copy { align-self: flex-start; font: inherit; font-size: 17px; font-weight: 600; color: #1C2236;
+    background: #FECC32; border: 0; border-radius: 999px; padding: 12px 26px; cursor: pointer; }
+  .h2p-copy:disabled { background: #F3F3F3; opacity: .7; cursor: not-allowed; }
+  .h2p-msg { font-size: 16px; font-weight: 600; max-width: 34ch; line-height: 1.4; }
+
+  .h2p footer { display: flex; flex-wrap: wrap; gap: 20px; align-items: center; justify-content: space-between;
+    border-top: 1px solid rgba(28,34,54,.16); padding-top: clamp(20px,3vw,32px); font-size: 15px; }
+
+  @keyframes hofsPunchA {
+    0%   { transform: translate3d(0,0,0) rotate(0deg) scale(1); }
+    25%  { transform: translate3d(-7%,5%,0) rotate(-16deg) scale(1.14); }
+    55%  { transform: translate3d(6%,-6%,0) rotate(14deg) scale(.9); }
+    100% { transform: translate3d(0,0,0) rotate(0deg) scale(1); }
+  }
+  @keyframes hofsPunchB {
+    0%   { transform: translate3d(0,0,0) rotate(0deg) scale(1); }
+    35%  { transform: translate3d(8%,-7%,0) rotate(20deg) scale(1.18); }
+    70%  { transform: translate3d(-6%,6%,0) rotate(-12deg) scale(.88); }
+    100% { transform: translate3d(0,0,0) rotate(0deg) scale(1); }
+  }
+  @keyframes hofsPunchC {
+    0%   { transform: translate3d(0,0,0) rotate(0deg) scale(1); }
+    50%  { transform: translate3d(-9%,-8%,0) rotate(-22deg) scale(1.2); }
+    100% { transform: translate3d(0,0,0) rotate(0deg) scale(1); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .h2p-blob { animation: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══ HOFS Hack 2 – ab hier kopieren ══ -->
+<div class="h2p">
+  <div class="h2p-blob" data-blob="1"></div>
+  <div class="h2p-blob" data-blob="2"></div>
+  <div class="h2p-blob" data-blob="3"></div>
+
+  <div class="h2p-inner">
+
+    <header>
+      <span class="h2p-eyebrow" data-reveal="0">E-Learning · Die 13 Hacks</span>
+      <div class="h2p-numrow">
+        <span class="h2p-num" data-reveal="80">02</span>
+        <div style="display:flex;flex-direction:column;gap:clamp(6px,1.2vw,14px);min-width:0">
+          <span class="h2p-hack" data-reveal="160">Hack 2</span>
+          <h1 data-reveal="240">Vorbereitung wie ein Profi</h1>
+        </div>
+      </div>
+    </header>
+
+    <section>
+      <h2 data-reveal="0" style="max-width:20ch">Welches Problem löst dieser Hack?</h2>
+      <p data-reveal="90">Ohne Vorbereitung kommen alle mit einem Fragezeichen im Gesicht ins Meeting. Die ersten zehn Minuten gehen dafür drauf, herauszufinden, worum es überhaupt geht.</p>
+      <div data-reveal="240" style="display:flex">
+        <span class="h2p-key">Überleg dir, wie sich die anderen vorbereiten können. Und schreib es in die Einladung.</span>
+      </div>
+    </section>
+
+    <section>
+      <div class="h2p-headrow" data-reveal="0">
+        <h2 class="sm" style="max-width:22ch">Was macht Vorbereitung wirklich möglich?</h2>
+        <span class="h2p-progress" id="h2p-progress">0 von 6 aufgedeckt</span>
+      </div>
+      <p class="sm" data-reveal="80">Tipp antippen und schauen, was dahintersteckt.</p>
+      <div class="h2p-cards" id="h2p-cards" data-reveal="160"></div>
+      <p class="h2p-done" id="h2p-alldone" hidden>Zwei Sätze in der Einladung genügen. Sie sparen euch zehn Minuten im Meeting.</p>
+    </section>
+
+    <section>
+      <span class="h2p-eyebrow" data-reveal="0">Deine Aufgabe</span>
+      <h2 data-reveal="80" style="max-width:22ch">So bringst du den Hack in deine Meetings</h2>
+      <p data-reveal="160">Schreib für dein nächstes Meeting auf, wie sich die anderen vorbereiten können.</p>
+    </section>
+
+    <section>
+      <h2 class="sm" data-reveal="0" style="max-width:24ch">Übung: Schreib deine Vorbereitung</h2>
+      <p class="sm" data-reveal="80">Vier Felder für dein nächstes Meeting. Was du hier schreibst, kannst du direkt in die Einladung übernehmen.</p>
+      <div class="h2p-fields" id="h2p-fields" data-reveal="140"></div>
+
+      <div class="h2p-out" data-reveal="200">
+        <span class="lab">Dein Vorbereitungs-Text</span>
+        <pre id="h2p-text"></pre>
+        <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center">
+          <button type="button" class="h2p-copy" id="h2p-copy" disabled>Text kopieren</button>
+          <span class="h2p-msg" id="h2p-msg"></span>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <span>Hack 2 von 13 · House of Future Skills</span>
+      <a href="#" style="font-size:17px;font-weight:600">Weiter zu Hack 3</a>
+    </footer>
+
+  </div>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  var CARDS = [
+    { label: "Thema nennen",          text: "Ein Satz, worum es geht. Nicht nur «Abstimmung Projekt»." },
+    { label: "Unterlagen verlinken",  text: "Direkt in die Einladung. Niemand sucht in alten Mails." },
+    { label: "Eine Frage stellen",    text: "Eine konkrete Frage lässt alle vorher denken." },
+    { label: "Beitrag klären",        text: "Sag, was jede:r mitbringen soll. Zahl, Meinung, Entscheid." },
+    { label: "Zeitbedarf angeben",    text: "«Zehn Minuten Lesezeit» ist eine ehrliche Ansage." },
+    { label: "Rechtzeitig senden",    text: "Vorbereitung braucht Vorlauf. Mindestens einen Tag." }
+  ];
+
+  var FIELDS = [
+    { key: "thema",      label: "Thema",        q: "Worum geht es in einem Satz?",            ph: "z. B. Wir wählen den Lieferanten für 2027 aus." },
+    { key: "lesen",      label: "Vorher lesen", q: "Was sollen die anderen vorab anschauen?", ph: "z. B. Die beiden Angebote im Ordner «Einkauf»." },
+    { key: "mitbringen", label: "Mitbringen",   q: "Was soll jede:r vorbereitet haben?",      ph: "z. B. Eine Frage oder einen Einwand pro Person." },
+    { key: "zeit",       label: "Zeitbedarf",   q: "Wie viel Zeit braucht die Vorbereitung?", ph: "z. B. Rund zehn Minuten." }
+  ];
+
+  var BLOBS = {
+    "1": { css: "right:-16%;top:2%;width:34%;padding-bottom:34%;background:#CEDFF8",
+           r: ["58% 52%", "42% 48%", "46% 52%", "54% 48%"], anim: "hofsPunchA 11s" },
+    "2": { css: "right:-12%;top:46%;width:24%;padding-bottom:24%;background:#F3978E",
+           r: ["48% 42%", "52% 46%", "44% 54%", "56% 58%"], anim: "hofsPunchB 8s" },
+    "3": { css: "left:-11%;bottom:22%;width:20%;padding-bottom:20%;background:#A6E2E4",
+           r: ["52% 46%", "48% 54%", "56% 46%", "44% 54%"], anim: "hofsPunchC 9.5s" }
+  };
+
+  var vals = { thema: "", lesen: "", mitbringen: "", zeit: "" };
+  var open = {};
+  var msgTimer = null;
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var $ = function (id) { return document.getElementById(id); };
+
+  /* ---- Blobs: Radien und Animation per JS (übersteht CSS-Filter in LMS/CMS) ---- */
+  Array.prototype.forEach.call(document.querySelectorAll(".h2p-blob"), function (el) {
+    var cfg = BLOBS[el.getAttribute("data-blob")];
+    if (!cfg) return;
+    el.setAttribute("style", "position:absolute;" + cfg.css);
+    el.style.borderRadius = "50%";
+    el.style.borderTopLeftRadius = cfg.r[0];
+    el.style.borderTopRightRadius = cfg.r[1];
+    el.style.borderBottomRightRadius = cfg.r[2];
+    el.style.borderBottomLeftRadius = cfg.r[3];
+    el.style.willChange = "transform";
+    if (!reduce) el.style.animation = cfg.anim + " ease-in-out infinite";
+  });
+
+  /* ---- Klick-Karten ---- */
+  function renderCards() {
+    var host = $("h2p-cards");
+    host.innerHTML = "";
+    CARDS.forEach(function (c, i) {
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "h2p-card";
+      btn.setAttribute("aria-expanded", open[i] ? "true" : "false");
+
+      var lab = document.createElement("span");
+      lab.className = "lab";
+      lab.appendChild(document.createTextNode(c.label));
+      var mark = document.createElement("span");
+      mark.className = "mark";
+      mark.textContent = open[i] ? "−" : "+";
+      lab.appendChild(mark);
+
+      var txt = document.createElement("p");
+      txt.className = "txt";
+      txt.textContent = c.text;
+
+      btn.appendChild(lab);
+      btn.appendChild(txt);
+      btn.addEventListener("click", function () {
+        open[i] = !open[i];
+        renderCards();
+      });
+      host.appendChild(btn);
+    });
+    var count = CARDS.filter(function (c, i) { return open[i]; }).length;
+    $("h2p-progress").textContent = count + " von 6 aufgedeckt";
+    $("h2p-alldone").hidden = count !== CARDS.length;
+  }
+
+  /* ---- Übungsfelder ---- */
+  function renderFields() {
+    var host = $("h2p-fields");
+    host.innerHTML = "";
+    FIELDS.forEach(function (f) {
+      var wrap = document.createElement("div");
+      wrap.className = "h2p-field";
+
+      var lab = document.createElement("span");
+      lab.className = "lab";
+      lab.textContent = f.label;
+
+      var q = document.createElement("span");
+      q.className = "q";
+      q.textContent = f.q;
+
+      var ta = document.createElement("textarea");
+      ta.rows = 2;
+      ta.placeholder = f.ph;
+      ta.value = vals[f.key];
+      ta.addEventListener("input", function () {
+        vals[f.key] = ta.value;
+        renderText();
+      });
+
+      wrap.appendChild(lab);
+      wrap.appendChild(q);
+      wrap.appendChild(ta);
+      host.appendChild(wrap);
+    });
+  }
+
+  /* ---- Text ---- */
+  function anyFilled() {
+    return FIELDS.some(function (f) { return vals[f.key].trim(); });
+  }
+
+  function buildText() {
+    if (!anyFilled()) return "Füll die vier Felder aus – hier entsteht dein Vorbereitungs-Text.";
+    var L = ["Hallo zusammen", ""];
+    if (vals.thema.trim()) L.push("Worum es geht: " + vals.thema.trim(), "");
+    L.push("So könnt ihr euch vorbereiten");
+    if (vals.lesen.trim()) L.push("Vorher lesen: " + vals.lesen.trim());
+    if (vals.mitbringen.trim()) L.push("Mitbringen: " + vals.mitbringen.trim());
+    if (vals.zeit.trim()) L.push("Zeitbedarf: " + vals.zeit.trim());
+    L.push("", "Danke, dass ihr euch die Zeit nehmt. Dann sind die ersten zehn Minuten kein Suchen mehr.");
+    return L.join("\n");
+  }
+
+  function renderText() {
+    $("h2p-text").textContent = buildText();
+    var btn = $("h2p-copy");
+    btn.disabled = !anyFilled();
+    if (btn.disabled) {
+      btn.textContent = "Text kopieren";
+      $("h2p-msg").textContent = "";
+    }
+  }
+
+  /* ---- Kopieren ---- */
+  function flash(msg) {
+    $("h2p-msg").textContent = msg;
+    clearTimeout(msgTimer);
+    msgTimer = setTimeout(function () { $("h2p-msg").textContent = ""; }, 6000);
+  }
+
+  function legacyCopy(text) {
+    var ta = document.createElement("textarea");
+    ta.value = text;
+    ta.setAttribute("readonly", "");
+    ta.style.position = "fixed";
+    ta.style.top = "0";
+    ta.style.left = "0";
+    ta.style.opacity = "0";
+    document.body.appendChild(ta);
+    ta.focus();
+    ta.select();
+    try { ta.setSelectionRange(0, text.length); } catch (e) {}
+    var ok = false;
+    try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+    document.body.removeChild(ta);
+    return ok;
+  }
+
+  $("h2p-copy").addEventListener("click", function () {
+    if (!anyFilled()) return;
+    var text = buildText();
+    var ok = function () {
+      $("h2p-copy").textContent = "Kopiert";
+      flash("Kopiert. Jetzt in deine Einladung einfügen.");
+    };
+    var fail = function () {
+      if (legacyCopy(text)) { ok(); return; }
+      var el = $("h2p-text");
+      var range = document.createRange();
+      range.selectNodeContents(el);
+      var sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(range);
+      var mac = /Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent);
+      $("h2p-copy").textContent = "Markiert — jetzt kopieren";
+      flash("Der Text ist markiert. Jetzt " + (mac ? "Cmd" : "Strg") + " + C drücken.");
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(ok, fail);
+    } else {
+      fail();
+    }
+  });
+
+  /* ---- Scroll-Einblendung ---- */
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      var el = e.target, delay = Number(el.getAttribute("data-reveal")) || 0;
+      setTimeout(function () { el.style.opacity = "1"; el.style.transform = "none"; }, reduce ? 0 : delay);
+      io.unobserve(el);
+    });
+  }, { threshold: 0.15, rootMargin: "0px 0px -6% 0px" });
+
+  Array.prototype.forEach.call(document.querySelectorAll("[data-reveal]"), function (el) {
+    if (!reduce) {
+      el.style.opacity = "0";
+      el.style.transform = "translateY(44px) scale(0.94)";
+    }
+    el.style.transition = "opacity 380ms ease-out, transform 480ms cubic-bezier(.2,1.5,.35,1)";
+    io.observe(el);
+  });
+
+  renderCards();
+  renderFields();
+  renderText();
+})();
+</script>
+<!-- ══ bis hier ══ -->
+
+</body>
+</html>
